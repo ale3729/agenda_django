@@ -2,12 +2,17 @@
 
 {% block content %}
     <h2>Agendamentos</h2>
+
     <a href="agenda/evento">
     <button type="button">Novo Evento</button>
-    <ul style="font-size: 18px">
     </a>
-    {% for evento in evento%}
-        <li>{{ evento.titulo }} >> {{ evento.get_data_evento }}</li>
-    {% endfor %}
+    <ul style="font-size: 18px">
+        {% for evento in evento%}
+            <li>{{ evento.titulo }} - {{ evento.descricao }} - {{ evento.local }} - {{ evento.get_data_evento }} -
+                ( <a href="agenda/evento/?id={{ evento.id }}"> Editar</a>
+                / <a href="agenda/evento/delete/{{ evento.id }}"> Excluir</a> )
+            </li>
+        {% endfor %}
     </ul>
+
 {% endblock %}
